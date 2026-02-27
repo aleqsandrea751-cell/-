@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>დედის დღე 💌</title>
+<style>
+body {
+    margin:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    font-family:sans-serif;
+}
+
+/* კონვერტი */
+.envelope {
+    position:relative;
+    width:320px;
+    height:220px;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    overflow:hidden;
+    background:#ffb6c1;
+    margin-bottom:20px;
+}
+
+/* წითელი თავი */
+.flap {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#d6002f;
+    clip-path:polygon(0 0,100% 0,50% 60%);
+    transform-origin:top;
+    transition:0.8s;
+    z-index:3;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* გული */
+.heart {
+    font-size:40px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.heart:hover {
+    transform:scale(1.2);
+}
+
+/* ფურცელი კონვერტის შიგნით, დასაწყისში დამალული */
+.letter {
+    position:absolute;
+    width:90%;
+    height:170px;
+    background:white;
+    bottom:0; 
+    left:50%;
+    transform:translateX(-50%) translateY(100%); /* დამალულია */
+    border-radius:8px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    transition:0.8s;
+    z-index:1;
+    font-size:18px;
+}
+
+/* გახსნის ეფექტი */
+.open .flap {
+    transform:rotateX(180deg);
+}
+
+.open .letter {
+    transform:translateX(-50%) translateY(0); /* ავარდება */
+}
+
+/* დაკეტვის ღილაკი */
+#closeButton {
+    padding:10px 20px;
+    font-size:16px;
+    border:none;
+    border-radius:5px;
+    background:#d6002f;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#closeButton:hover {
+    background:#b50027;
+}
+</style>
+</head>
+<body>
+
+<div class="envelope" id="envelope">
+    <div class="flap" onclick="toggleEnvelope()">
+        <div class="heart">❤️</div>
+    </div>
+    <div class="letter">
+        დედა 💖<br><br>
+        გილოცავ 3 მარტს 🌹<br>
+        მიყვარხარ ყველაზე მეტად!
+    </div>
+</div>
+
+<!-- ღილაკი დახურვისთვის -->
+<button id="closeButton" onclick="closeEnvelope()">დაკეტვა</button>
+
+<script>
+function toggleEnvelope(){
+    const envelope = document.getElementById("envelope");
+    envelope.classList.toggle("open"); // თითო კლიკზე იხსნება ან იკეტება
+}
+
+function closeEnvelope(){
+    const envelope = document.getElementById("envelope");
+    envelope.classList.remove("open"); // დახურვა მხოლოდ ღილაკით
+}
+</script>
+
+</body>
+</html>
